@@ -4,7 +4,7 @@ namespace UnicamFattoriale
 {
     class Program
     {
-        static void Main(string[] args)
+       static void Main(string[] args)
         {
             //Stampo dei messaggi di cortesia per l'utente, così lo guido all'utilizzo del programma
             Console.WriteLine("Questo programma calcola il fattoriale di un numero");
@@ -19,17 +19,20 @@ namespace UnicamFattoriale
             //che non è interpretabile come un numero! (Es. ABCD)
             int numero = int.Parse(testoDigitatoDallUtente);
 
-            //Calcolo il fattoriale: qui ci sono degli errori!
-            int risultato = 0;
-            while (numero >= 0) {
-                risultato *= numero;
-                numero--;
-            }
+            //Calcolo il fattoriale (fixed)
+            int risultato = fattoriale(numero);
 
             //Stampo il risultato
             Console.WriteLine($"Il fattoriale di {numero} e' {risultato}");
             //Attendo che l'utente prema un tasto prima di uscire, altrimenti 
             Console.ReadKey();
+        }
+
+        static int fattoriale(int numero){
+            if(numero<=1)
+                return 1;
+            else
+                return numero * fattoriale(numero - 1);
         }
     }
 }
